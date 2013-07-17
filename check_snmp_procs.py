@@ -66,10 +66,10 @@ def getprocesses():
 
 # check if a given string matches the list of running processes
 def checkrunning(searchstring):
-	if searchstring in processes.values():
-		return 1
-	else:
-		return 0
+        for process in processes.values():
+                if process.startswith(searchstring):
+                        return 1
+        return 0
 
 # parameter handling
 parser = argparse.ArgumentParser()
