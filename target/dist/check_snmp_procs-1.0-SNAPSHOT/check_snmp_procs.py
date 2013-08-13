@@ -73,7 +73,9 @@ def get_processes():
 		try:
 			hrSWRunNameList[key] = hrSWRunNameList[key] + " " + value
 		except KeyError:
-			exit_unknown("could not match parameter: %s to process with pid: %s" % (value,key)) 
+			if debug:
+				print "could not match parameter: %s to process with pid: %s, ignoring it!" % (value,key)
+			pass 
 	if debug:
 		print "- created processes list with %d items" % len(hrSWRunNameList)
 	if verbose:
