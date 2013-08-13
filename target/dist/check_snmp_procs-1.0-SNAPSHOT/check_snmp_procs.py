@@ -54,8 +54,8 @@ def convert_list_to_kv_dict(raw_list):
 	dict = {}
 	for line in raw_list:
 		if line:
-			# split linestring into key and value
-			line = line.split('=')
+			# split linestring into key and value only ot the first occurence of "="
+			line = line.split('=',1)
 			# separate last oid element as pid
 			key = line[0].split('.')[-1].strip()
 			# remove unwanted characters
