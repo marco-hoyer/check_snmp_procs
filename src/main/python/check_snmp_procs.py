@@ -39,12 +39,13 @@ def get_list_by_snmp(oid):
     result = execute(command, params + [oid])
     if result[0] == 0:
         retval = str(result[1]).split('\n')
-    if debug:
-        print "- received %i values via snmp" % len(retval)
+        if debug:
+            print "- received %i values via snmp" % len(retval)
+        if verbose:
+            print "received items: \n %s \n" % retval
+            
         if len(retval) <= 2:
             exit_unknown("received invalid data via snmp for oid %s" % oid)
-    if verbose:
-        print "received items: \n %s \n" % retval
         return retval
     else:
         exit_unknown("something went wrong on getting data via snmp for oid %s" % oid)
